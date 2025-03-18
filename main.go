@@ -106,7 +106,7 @@ func main() {
 
 	tag, err := id3v2.Open(mp3File, id3v2.Options{Parse: true})
 	if err != nil {
-		log.Fatalf("Error opening MP3 file: %v", err)
+		log.Fatalf("error opening MP3 file: %v", err)
 	}
 	defer tag.Close()
 
@@ -163,7 +163,7 @@ func main() {
 			} else {
 				b, ct, err := fetchAlbumArtURL(u)
 				if err != nil {
-					log.Fatalf("Error fetch album art image: %v", err)
+					log.Fatalf("error fetch album art image: %v", err)
 				}
 				pic := id3v2.PictureFrame{
 					Encoding:    id3v2.EncodingISO,
@@ -182,7 +182,7 @@ func main() {
 			} else {
 				b, err := os.ReadFile(embedImage)
 				if err != nil {
-					log.Fatalf("Error read album art image: %v", err)
+					log.Fatalf("error read album art image: %v", err)
 				}
 				ct := http.DetectContentType(b)
 				pic := id3v2.PictureFrame{
@@ -224,7 +224,7 @@ func main() {
 			} else {
 				b, err := os.ReadFile(embedLyrics)
 				if err != nil {
-					log.Fatalf("Error read lyrics file: %v", err)
+					log.Fatalf("error read lyrics file: %v", err)
 				}
 				uslt := id3v2.UnsynchronisedLyricsFrame{
 					Encoding:          id3v2.EncodingUTF8,
@@ -241,7 +241,7 @@ func main() {
 	if !dryRun {
 		err = tag.Save()
 		if err != nil {
-			log.Fatalf("Error saving MP3 file: %v", err)
+			log.Fatalf("error saving MP3 file: %v", err)
 			return
 		}
 
