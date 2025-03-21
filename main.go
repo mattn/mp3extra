@@ -199,7 +199,7 @@ func main() {
 	}
 
 	if embedLyrics != "" {
-		if embedImage == "auto" {
+		if embedLyrics == "auto" {
 			lyrics, err := downloadLrc(tag.Artist(), tag.Title())
 			if err != nil {
 				log.Fatal(err)
